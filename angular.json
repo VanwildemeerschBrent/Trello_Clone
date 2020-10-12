@@ -65,6 +65,7 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "browserTarget": "trello-clone:build",
+            "proxyConfig": "src/proxy.conf.json",
             "customWebpackConfig": {
               "path": "webpack.config.js"
             }

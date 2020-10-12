@@ -12,6 +12,8 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BoardOverviewComponent } from './modules/boardOverview/components/board-overview/board-overview.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 
 
@@ -32,6 +34,7 @@ import { BoardOverviewComponent } from './modules/boardOverview/components/board
     ReactiveFormsModule,
     RouterModule,
     FontAwesomeModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
