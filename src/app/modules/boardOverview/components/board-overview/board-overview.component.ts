@@ -13,12 +13,22 @@ export class BoardOverviewComponent implements OnInit {
   faUser = faUser;
 
   trelloBoards: Board[] = [];
+  lastChangedBoards: Board[];
   constructor(private boardService: BoardService) { }
 
   ngOnInit() {
     this.boardService.getAllTrelloBoards().subscribe((allBoards) => {
-      this.trelloBoards = allBoards
+      this.trelloBoards = allBoards.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+      this.sortAndFilterByLastUpdated();
     });
+  }
+
+  sortAndFilterByLastUpdated(): void {
+    let sortedBoards = Array.from(this.trelloBoards);
+    sortedBoards = sortedBoards.sort((a, b) => {
+      return ((new Date(a.updated_at) < new Date(b.updated_at)) ? -1 : (new Date(a.updated_at) > new Date(b.updated_at)) ? 1 : 0);
+    });
+    this.lastChangedBoards = sortedBoards.slice(0, 2);
   }
 
 
