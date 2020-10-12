@@ -2,8 +2,41 @@
   <div class="w-2/4 min-h-screen float-left relative">
     <div class="c-login__form min-h-screen min-w-full">
       <div class="login__form__content w-full max-w-lg mx-auto align-middle">
-        <form class="px-8 pt-6 pb-8 mb-4">
+        <form
+          class="px-8 pt-6 pb-8 mb-4"
+          [formGroup]="loginForm"
+          (ngSubmit)="onLogin()"
+        >
           <p class="text-5xl mb-4">Trello Clone Project</p>
+          <div
+            class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-3"
+            role="alert"
+            *ngIf="
+              email.invalid && (email.dirty || email.touched) && isSubmitted
+            "
+          >
+            <div class="block sm:inline" *ngIf="email.hasError('required')">
+              Email is required
+            </div>
+            <div class="block sm:inline" *ngIf="email.hasError('email')">
+              Email is not valid
+            </div>
+          </div>
+          <div
+            class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-3"
+            *ngIf="
+              password.invalid &&
+              (password.dirty || password.touched) &&
+              isSubmitted
+            "
+          >
+            <div *ngIf="password.hasError('required')">
+              Password is required
+            </div>
+            <div *ngIf="password.hasError('minlength')">
+              Password is min 3 characters
+            </div>
+          </div>
           <div class="mb-8 text-left">
             <label
               class="block text-gray-700 text-sm font-bold mb-2"
@@ -14,6 +47,7 @@
               class="appearance-none border-b-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="username"
               type="text"
+              formControlName="email"
               placeholder="Username"
             />
           </div>
@@ -27,21 +61,23 @@
               class="appearance-none border-b-2 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
+              formControlName="password"
               placeholder="******************"
             />
           </div>
           <div class="flex items-center justify-center text-center">
-            <button
-              routerLink="/auth/register"
+            <!-- <a
+              routerLink="/auth/authentication"
+              routerLinkActive="text-red-600"
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-3"
               type="button"
             >
               Register
-            </button>
+            </a> -->
             <button
               :class="{'cursor-not-allowed opacity-50 pointer-events-none':!isInputValid}"
               class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-3"
-              type="button"
+              type="submit"
             >
               Sign In
             </button>

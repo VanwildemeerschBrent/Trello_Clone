@@ -7,6 +7,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { LoginComponent } from './modules/login/components/login/login.component';
 import { RegistrationComponent } from './modules/registration/components/registration/registration.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +21,9 @@ import { RegistrationComponent } from './modules/registration/components/registr
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
