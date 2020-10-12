@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { LoginComponent } from './modules/login/components/login/login.component';
+import { RegistrationComponent } from './modules/registration/components/registration/registration.component';
 
 
 
@@ -12,7 +14,9 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
