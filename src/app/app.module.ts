@@ -16,11 +16,11 @@ import { HeaderComponent } from './shared/components/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     FooterComponent,
     LoginComponent,
     RegistrationComponent,
     HomeComponent,
-    HeaderComponent
   ],
   imports: [
     BrowserModule,
