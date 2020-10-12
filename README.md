@@ -1,2 +1,3 @@
 # Trello_Clone
-Clone of Trello made in React with mongoDB
+
+Clone of Trello made in Angular with mongoDB
