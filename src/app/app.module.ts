@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './shared/components/home/home.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BoardOverviewComponent } from './modules/boardOverview/components/board-overview/board-overview.component';
 
 
 
@@ -21,6 +23,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
     LoginComponent,
     RegistrationComponent,
     HomeComponent,
+    BoardOverviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
