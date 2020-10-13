@@ -3,3 +3,9 @@
   left: 50%;
   top: 50%;
 }
+
+[disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+  transition: 0.5s ease-in;
+}

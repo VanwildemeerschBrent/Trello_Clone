@@ -18,4 +18,8 @@ export class BoardService {
   getTrelloBoard(): void {
     console.log('getTrelloBoard');
   }
+
+  createTrelloBoard(board: Board): Observable<Board> {
+    return this.http.post<Board>('http://localhost:3000/boards', board);
+  }
 }

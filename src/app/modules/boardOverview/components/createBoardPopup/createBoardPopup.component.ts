@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { Board } from '../../models/board';
 @Component({
   selector: 'app-createBoardPopup',
   templateUrl: './createBoardPopup.component.html',
@@ -7,9 +9,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateBoardPopupComponent implements OnInit {
 
-  constructor() { }
+  faTimes = faTimes;
+
+  @Output() closePopup = new EventEmitter<boolean>();
+  @Output() createNewBoard = new EventEmitter<Board>();
+
+  creationForm: FormGroup;
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.creationForm = this.formBuilder.group({
+      name: new FormControl('', Validators.required),
+      tags: new FormControl('')
+    });
   }
 
+  onClickClosePopup(): void {
+    this.closePopup.emit(true);
+
+  }
+  onClickCreateBoard(): void {
+    if (this.creationForm.valid) {
+      const newBoard: Board = new Board();
+      newBoard.id = Math.random().toString(36).substring(2) + Date.now().toString(36);
+      newBoard.name = this.creationForm.get('name').value;
+      newBoard.tags = this.creationForm.get('tags').value.split(';').map(x => x.trim());
+      newBoard.created_by = 'User';
+      newBoard.created_at = new Date().toISOString();
+      newBoard.updated_at = new Date().toISOString();
+      this.createNewBoard.emit(newBoard);
+    }
+
+  }
 }

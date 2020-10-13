@@ -1,5 +1,5 @@
-export interface Board {
-    id: number;
+export class Board {
+    id: string;
     name: string;
     created_by: string;
     created_at: string;

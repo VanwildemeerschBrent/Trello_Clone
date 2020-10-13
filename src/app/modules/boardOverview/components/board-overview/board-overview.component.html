@@ -68,4 +68,6 @@
 <app-createBoardPopup
   @fadePopup
   *ngIf="isNewBoardPopupVisible"
+  (closePopup)="isNewBoardPopupVisible = false"
+  (createNewBoard)="onCreateNewBoardRequestHandler($event)"
 ></app-createBoardPopup>

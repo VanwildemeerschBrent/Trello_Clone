@@ -1,6 +1,65 @@
 <div class="absolute top-0 left-0 z-10 w-full h-full">
   <div class="w-full h-full bg-black opacity-75 popup_bg"></div>
-  <div class="absolute w-2/5 h-auto p-4 bg-white popup_content">
-    <p class="text-lg font-semibold">Create new board</p>
+  <div class="absolute w-1/4 h-auto p-6 bg-white popup_content">
+    <p class="px-4 text-2xl font-semibold">
+      Create new Trello board
+      <button class="relative float-right" (click)="onClickClosePopup()">
+        <fa-icon [icon]="faTimes" class="px-3"></fa-icon>
+      </button>
+    </p>
+    <form class="w-full max-w-sm px-4 mt-5" [formGroup]="creationForm">
+      <div class="mb-6 md:flex md:items-center">
+        <div class="md:w-1/3">
+          <label
+            class="block pr-4 mb-1 md:text-right md:mb-0"
+            for="inline-full-name"
+          >
+            Board Name
+          </label>
+        </div>
+        <div class="md:w-2/3">
+          <input
+            class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-blue-500"
+            id="inline-full-name"
+            type="text"
+            value=""
+            placeholder="Board Name"
+            formControlName="name"
+          />
+        </div>
+      </div>
+      <div class="mb-6 md:flex md:items-center">
+        <div class="md:w-1/3">
+          <label
+            class="block pr-4 mb-1 md:text-right md:mb-0"
+            for="inline-password"
+          >
+            Tags
+          </label>
+        </div>
+        <div class="md:w-2/3">
+          <input
+            class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-blue-500"
+            id="inline-password"
+            type="text"
+            placeholder="Separate tags with ;"
+            formControlName="tags"
+          />
+        </div>
+      </div>
+      <div class="md:flex md:items-center">
+        <div class="md:w-1/3"></div>
+        <div class="text-right md:w-2/3">
+          <button
+            (click)="onClickCreateBoard()"
+            [disabled]="!creationForm.valid"
+            class="px-4 py-2 font-bold text-white bg-blue-500 rounded shadow focus:shadow-outline focus:outline-none"
+            type="button"
+          >
+            Create board
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

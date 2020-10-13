@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faClock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { BoardService } from 'src/app/shared/services/board.service';
 import { Board } from '../../models/board';
@@ -29,7 +30,7 @@ export class BoardOverviewComponent implements OnInit {
   trelloBoards: Board[] = [];
   lastChangedBoards: Board[];
   isNewBoardPopupVisible: boolean = false;
-  constructor(private boardService: BoardService) { }
+  constructor(private boardService: BoardService, private router: Router) { }
 
   ngOnInit() {
     this.boardService.getAllTrelloBoards().subscribe((allBoards) => {
@@ -44,6 +45,14 @@ export class BoardOverviewComponent implements OnInit {
       return ((new Date(a.updated_at) < new Date(b.updated_at)) ? -1 : (new Date(a.updated_at) > new Date(b.updated_at)) ? 1 : 0);
     });
     this.lastChangedBoards = sortedBoards.slice(0, 2);
+  }
+
+  onCreateNewBoardRequestHandler($event): void {
+    this.boardService.createTrelloBoard($event).subscribe((board) => {
+      this.trelloBoards.push(board);
+      this.isNewBoardPopupVisible = false;
+      this.router.navigateByUrl('/board/' + board.id)
+    })
   }
 
 
