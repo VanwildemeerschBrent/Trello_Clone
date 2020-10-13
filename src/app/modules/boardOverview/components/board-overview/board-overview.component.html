@@ -11,6 +11,7 @@
         <span class="pl-4">Recent Bekeken</span>
       </p>
       <div
+        @fade
         class="relative float-left max-w-xs mx-2 my-5 overflow-hidden rounded shadow-2xl opacity-75 cursor-pointer hover:opacity-100 hover:shadow-outline"
         *ngFor="let board of lastChangedBoards"
         [ngStyle]="{
@@ -42,6 +43,7 @@
       </p>
 
       <div
+        @fade
         class="relative float-left max-w-xs mx-2 my-5 overflow-hidden rounded shadow-2xl opacity-75 cursor-pointer hover:opacity-100 hover:shadow-outline"
         *ngFor="let board of trelloBoards"
         [ngStyle]="{

@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { faClock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { BoardService } from 'src/app/shared/services/board.service';
@@ -5,7 +6,15 @@ import { Board } from '../../models/board';
 @Component({
   selector: 'app-board-overview',
   templateUrl: './board-overview.component.html',
-  styleUrls: ['./board-overview.component.scss']
+  styleUrls: ['./board-overview.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(500)
+      ])
+    ])
+  ]
 })
 export class BoardOverviewComponent implements OnInit {
 

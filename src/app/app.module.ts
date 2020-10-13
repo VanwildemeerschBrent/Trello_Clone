@@ -13,7 +13,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BoardOverviewComponent } from './modules/boardOverview/components/board-overview/board-overview.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 
@@ -35,6 +35,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     RouterModule,
     FontAwesomeModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
