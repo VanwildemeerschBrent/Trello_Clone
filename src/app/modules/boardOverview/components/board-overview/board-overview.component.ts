@@ -51,7 +51,7 @@ export class BoardOverviewComponent implements OnInit {
     this.boardService.createTrelloBoard($event).subscribe((board) => {
       this.trelloBoards.push(board);
       this.isNewBoardPopupVisible = false;
-      this.router.navigateByUrl('/board/' + board.id)
+      this.router.navigateByUrl('/board/' + board.id);
     })
   }
 
