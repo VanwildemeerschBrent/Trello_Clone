@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Board } from 'src/app/shared/models/board';
 import { BoardService } from 'src/app/shared/services/board.service';
 
 @Component({
@@ -8,11 +10,15 @@ import { BoardService } from 'src/app/shared/services/board.service';
 })
 export class BoardComponent implements OnInit {
 
-  constructor(private boardService: BoardService) { }
+  board: Board;
+  constructor(private boardService: BoardService, private route: ActivatedRoute) {
+    console.log('Constructor Board component')
+  }
 
-  ngOnInit() {
-    this.boardService.getAllTrelloBoards().subscribe((boards) => {
-
+  ngOnInit(): void {
+    const boardId = this.route.snapshot.paramMap.get('id');
+    this.boardService.getTrelloBoard(boardId).subscribe((fetchedBoard) => {
+      this.board = fetchedBoard;
     })
   }
 

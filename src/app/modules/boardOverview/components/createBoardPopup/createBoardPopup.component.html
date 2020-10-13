@@ -7,7 +7,11 @@
         <fa-icon [icon]="faTimes" class="px-3"></fa-icon>
       </button>
     </p>
-    <form class="w-full max-w-sm px-4 mt-5" [formGroup]="creationForm">
+    <form
+      class="w-full max-w-sm px-4 mt-5"
+      [formGroup]="creationForm"
+      (ngSubmit)="onClickCreateBoard()"
+    >
       <div class="mb-6 md:flex md:items-center">
         <div class="md:w-1/3">
           <label
@@ -51,10 +55,9 @@
         <div class="md:w-1/3"></div>
         <div class="text-right md:w-2/3">
           <button
-            (click)="onClickCreateBoard()"
             [disabled]="!creationForm.valid"
             class="px-4 py-2 font-bold text-white bg-blue-500 rounded shadow focus:shadow-outline focus:outline-none"
-            type="button"
+            type="submit"
           >
             Create board
           </button>

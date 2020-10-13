@@ -15,8 +15,8 @@ export class BoardService {
     return this.http.get<Board[]>('http://localhost:3000/boards');
   }
 
-  getTrelloBoard(): void {
-    console.log('getTrelloBoard');
+  getTrelloBoard(boardId: string): Observable<Board> {
+    return this.http.get<Board>('http://localhost:3000/boards/' + boardId)
   }
 
   createTrelloBoard(board: Board): Observable<Board> {

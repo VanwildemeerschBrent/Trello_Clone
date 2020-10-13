@@ -15,6 +15,7 @@ import { BoardOverviewComponent } from './modules/boardOverview/components/board
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CreateBoardPopupComponent } from './modules/boardOverview/components/createBoardPopup/createBoardPopup.component';
+import { BoardComponent } from './modules/board/components/board/board.component';
 
 
 
@@ -27,7 +28,8 @@ import { CreateBoardPopupComponent } from './modules/boardOverview/components/cr
     RegistrationComponent,
     HomeComponent,
     BoardOverviewComponent,
-    CreateBoardPopupComponent
+    CreateBoardPopupComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,
