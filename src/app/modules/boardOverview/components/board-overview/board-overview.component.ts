@@ -11,18 +11,24 @@ import { Board } from '../../models/board';
     trigger('fade', [
       transition('void => *', [
         style({ opacity: 0 }),
-        animate(500)
+        animate(1000)
+      ])
+    ]),
+    trigger('fadePopup', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate(200)
       ])
     ])
   ]
 })
 export class BoardOverviewComponent implements OnInit {
-
   faClock = faClock;
   faUser = faUser;
 
   trelloBoards: Board[] = [];
   lastChangedBoards: Board[];
+  isNewBoardPopupVisible: boolean = false;
   constructor(private boardService: BoardService) { }
 
   ngOnInit() {

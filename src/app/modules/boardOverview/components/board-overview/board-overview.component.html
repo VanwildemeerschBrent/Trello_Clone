@@ -1,6 +1,7 @@
 <div class="w-5/12 pt-5 board_overview_content">
   <div class="w-full mainContent">
     <button
+      (click)="isNewBoardPopupVisible = true"
       class="px-4 py-2 mb-2 font-semibold text-blue-700 bg-transparent border border-blue-500 rounded hover:bg-blue-500 hover:text-white hover:border-transparent focus:outline-none"
     >
       Create new board
@@ -26,12 +27,9 @@
         </div>
         <div class="px-6 pt-4 pb-2">
           <span
+            *ngFor="let tag of board.tags"
             class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
-            >#photography</span
-          >
-          <span
-            class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
-            >#travel</span
+            >#{{ tag | lowercase }}</span
           >
         </div>
       </div>
@@ -58,15 +56,16 @@
         </div>
         <div class="px-6 pt-4 pb-2">
           <span
+            *ngFor="let tag of board.tags"
             class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
-            >#photography</span
-          >
-          <span
-            class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
-            >#travel</span
+            >#{{ tag | lowercase }}</span
           >
         </div>
       </div>
     </div>
   </div>
 </div>
+<app-createBoardPopup
+  @fadePopup
+  *ngIf="isNewBoardPopupVisible"
+></app-createBoardPopup>

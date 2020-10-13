@@ -14,6 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BoardOverviewComponent } from './modules/boardOverview/components/board-overview/board-overview.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { CreateBoardPopupComponent } from './modules/boardOverview/components/createBoardPopup/createBoardPopup.component';
 
 
 
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     RegistrationComponent,
     HomeComponent,
     BoardOverviewComponent,
+    CreateBoardPopupComponent
   ],
   imports: [
     BrowserModule,
