@@ -2,8 +2,10 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faClock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Board } from 'src/app/shared/models/board';
 import { BoardService } from 'src/app/shared/services/board.service';
-import { Board } from '../../models/board';
+
+
 @Component({
   selector: 'app-board-overview',
   templateUrl: './board-overview.component.html',
