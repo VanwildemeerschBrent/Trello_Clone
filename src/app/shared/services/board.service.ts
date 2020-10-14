@@ -12,11 +12,11 @@ export class BoardService {
   constructor(private http: HttpClient) { }
 
   getAllTrelloBoards(): Observable<Board[]> {
-    return this.http.get<Board[]>('http://localhost:3000/boards');
+    return this.http.get<Board[]>('http://localhost:3000/boards/all');
   }
 
   getTrelloBoard(boardId: string): Observable<Board> {
-    return this.http.get<Board>('http://localhost:3000/boards/' + boardId)
+    return this.http.get<Board>('http://localhost:3000/boards/' + boardId);
   }
 
   createTrelloBoard(board: Board): Observable<Board> {
