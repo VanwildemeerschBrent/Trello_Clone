@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Board } from 'src/app/modules/boardOverview/models/board';
+import { Board } from '../models/board';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class BoardService {
     return this.http.get<Board[]>('http://localhost:3000/boards');
   }
 
-  getTrelloBoard(): void {
-    console.log('getTrelloBoard');
+  getTrelloBoard(boardId: string): Observable<Board> {
+    return this.http.get<Board>('http://localhost:3000/boards/' + boardId)
   }
 
   createTrelloBoard(board: Board): Observable<Board> {

@@ -20,7 +20,10 @@
       "created_at": "2020-10-12T15:01:44.381Z",
       "updated_at": "2020-10-12T15:01:44.381Z",
       "name": "Angular Board 1",
-      "tags": ["Photograpy", "travel"]
+      "tags": [
+        "Photograpy",
+        "travel"
+      ]
     },
     {
       "id": 2,
@@ -28,7 +31,20 @@
       "created_at": "2019-10-12T15:01:44.381Z",
       "updated_at": "2019-10-12T15:01:44.381Z",
       "name": "Circular Board 2",
-      "tags": ["Coding", "Learning"]
+      "tags": [
+        "Coding",
+        "Learning"
+      ]
+    },
+    {
+      "id": "gxnf9ws7ed7kg7xy7oa",
+      "name": "Test123",
+      "tags": [
+        "test1"
+      ],
+      "created_by": "User",
+      "created_at": "2020-10-13T12:28:06.106Z",
+      "updated_at": "2020-10-13T12:28:06.106Z"
     }
   ]
 }
