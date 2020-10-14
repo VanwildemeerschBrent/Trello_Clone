@@ -46,7 +46,7 @@ jobs:
         run: npm install
 
       - name: Build Project
-        run: ng build --prod --base-href "https://vanwildemeerschbrent.github.io/Trello_Clone/"
+        run: npm run build
 
       - name: Deploy 🚀
         uses: peaceiris/actions-gh-pages@v3
