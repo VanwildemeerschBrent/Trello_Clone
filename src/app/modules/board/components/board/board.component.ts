@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Board } from 'src/app/shared/models/board';
 import { BoardService } from 'src/app/shared/services/board.service';
-import { faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons"
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -11,6 +11,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons"
 export class BoardComponent implements OnInit {
 
   faPlus = faPlus;
+  faClose = faTimes
   board: Board;
   boardColumns: number = 0;
   isBtnAddColumnVisible: boolean = true;
