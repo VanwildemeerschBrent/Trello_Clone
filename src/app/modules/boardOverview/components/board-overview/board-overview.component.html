@@ -44,7 +44,7 @@
         @fade
         class="relative float-left max-w-xs mx-2 my-5 overflow-hidden rounded shadow-2xl opacity-75 cursor-pointer hover:opacity-100 hover:shadow-outline"
         *ngFor="let board of trelloBoards"
-        [routerLink]="['/board', board.id]"
+        [routerLink]="['/main/board', board.id]"
         [ngStyle]="{
           background:
             'url(https://picsum.photos/300/200?grayscale&blur=3?random=' +
