@@ -4,5 +4,6 @@ export class Board {
     created_by: string;
     created_at: string;
     updated_at: string;
-    tags: [];
+    tags: string[];
+    issues: object[];
 }
