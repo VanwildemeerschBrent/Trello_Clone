@@ -47,3 +47,11 @@ jobs:
 
       - name: Build Project
         run: npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          GITHUB_TOKEN: ${{secret.GITHUB_TOKEN}}
+          BRANCH: gh-pages
+          FOLDER: build
+          CLEAN: true
