@@ -7,19 +7,19 @@ import { Board } from '../models/board';
   providedIn: 'root'
 })
 export class BoardService {
-  private API_URL = "http://localhost:3000/"
+  private API_URL = 'https://trello-clone-api-bv.herokuapp.com/';
 
   constructor(private http: HttpClient) { }
 
   getAllTrelloBoards(): Observable<Board[]> {
-    return this.http.get<Board[]>('http://localhost:3000/boards');
+    return this.http.get<Board[]>(this.API_URL + 'boards/all');
   }
 
   getTrelloBoard(boardId: string): Observable<Board> {
-    return this.http.get<Board>('http://localhost:3000/boards/' + boardId)
+    return this.http.get<Board>(this.API_URL + 'boards/' + boardId)
   }
 
   createTrelloBoard(board: Board): Observable<Board> {
-    return this.http.post<Board>('http://localhost:3000/boards', board);
+    return this.http.post<Board>(this.API_URL + 'boards', board);
   }
 }
