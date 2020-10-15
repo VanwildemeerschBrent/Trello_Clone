@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginComponent } from 'src/app/modules/login/components/login/login.component';
 
@@ -6,7 +7,11 @@ import { LoginComponent } from 'src/app/modules/login/components/login/login.com
 })
 export class AuthenticationService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  login() { }
+
+  register() { }
 
 
 }
