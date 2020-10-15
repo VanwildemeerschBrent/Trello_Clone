@@ -29,7 +29,9 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     this.isSubmitted = true;
     if (this.loginForm.valid) {
-      this.router.navigateByUrl('/overview');
+      this.authenticationService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe((user) => {
+        console.log('User received');
+      })
     } else {
       console.log('Form is not valid', this.loginForm.get('email').value, this.loginForm.get('password').value);
     }

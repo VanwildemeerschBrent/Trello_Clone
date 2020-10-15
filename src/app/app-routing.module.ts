@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthComponent } from './modules/authentication/auth/auth.component';
+import { LoginComponent } from './modules/authentication/login/login.component';
+import { RegistrationComponent } from './modules/authentication/registration/registration.component';
 import { BoardComponent } from './modules/board/components/board/board.component';
 import { BoardOverviewComponent } from './modules/boardOverview/components/board-overview/board-overview.component';
-import { LoginComponent } from './modules/login/components/login/login.component';
+
 import { HomeComponent } from './shared/components/home/home.component';
 
 const routes: Routes = [
-  { path: 'auth/login', component: LoginComponent },
+  {
+    path: 'auth', component: AuthComponent, children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'registration', component: RegistrationComponent }
+    ]
+  },
+
   { path: '', redirectTo: 'main/overview', pathMatch: 'full' },
   {
     path: 'main', component: HomeComponent, children: [
