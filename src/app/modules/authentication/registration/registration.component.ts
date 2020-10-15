@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { User } from 'src/app/shared/models/user';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +12,7 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   isSubmitted: boolean = false;
-  constructor(private authenticationService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
@@ -22,17 +23,30 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
+  get name(): AbstractControl { return this.registrationForm.get('name'); }
   get email(): AbstractControl { return this.registrationForm.get('email'); }
   get password(): AbstractControl { return this.registrationForm.get('password'); }
-  get confirmedPassword(): AbstractControl { return this.registrationForm.get('confirmedPassword'); }
+  get confirmedPassword(): AbstractControl { return this.registrationForm.get('confirmedPassword') }
 
   onRegister(): void {
     this.isSubmitted = true;
-    if (this.registrationForm.valid) {
-
-    } else {
-      console.log('Form is not valid', this.registrationForm.get('email').value, this.registrationForm.get('password').value);
+    console.warn('Do passwords match', this.doPasswordsMatch());
+    if (this.registrationForm.valid && this.doPasswordsMatch()) {
+      const newUser = new User();
+      newUser.name = this.registrationForm.get('name').value;
+      newUser.email = this.registrationForm.get('email').value;
+      newUser.password = this.registrationForm.get('password').value;
+      this.userService.register(newUser).subscribe((user) => {
+        console.warn('User registered');
+        this.router.navigateByUrl('/auth/login');
+      })
     }
+  }
+
+  doPasswordsMatch(): boolean {
+    const password = this.registrationForm.get('password').value;
+    const confirmedPassword = this.registrationForm.get('confirmedPassword').value;
+    return password.length === confirmedPassword.length && password === confirmedPassword;
   }
 
 }

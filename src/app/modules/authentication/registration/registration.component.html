@@ -6,44 +6,52 @@
       (ngSubmit)="onRegister()"
     >
       <p class="px-5 mb-4 text-5xl text-center">Brello: Register</p>
-      <div
-        class="relative px-4 py-3 mb-3 text-red-700 bg-red-100 border border-red-400 rounded"
-        role="alert"
-        *ngIf="email.invalid && (email.dirty || email.touched) && isSubmitted"
-      >
-        <div class="block sm:inline" *ngIf="email.hasError('required')">
-          Email is required
+      <div class="form_validation_alerts">
+        <div
+          class="relative px-4 py-3 mb-3 text-red-700 bg-red-100 border border-red-400 rounded"
+          role="alert"
+          *ngIf="name.invalid && (name.dirty || name.touched) && isSubmitted"
+        >
+          <div class="block sm:inline" *ngIf="name.hasError('required')">
+            Name is required
+          </div>
+          <div class="block sm:inline" *ngIf="name.hasError('minLength')">
+            Name should be at least 2 characters
+          </div>
         </div>
-        <div class="block sm:inline" *ngIf="email.hasError('email')">
-          Email is not valid
+        <div
+          class="relative px-4 py-3 mb-3 text-red-700 bg-red-100 border border-red-400 rounded"
+          role="alert"
+          *ngIf="email.invalid && (email.dirty || email.touched) && isSubmitted"
+        >
+          <div class="block sm:inline" *ngIf="email.hasError('required')">
+            Email is required
+          </div>
+          <div class="block sm:inline" *ngIf="email.hasError('email')">
+            Email is not valid
+          </div>
+        </div>
+        <div
+          class="relative px-4 py-3 mb-3 text-red-700 bg-red-100 border border-red-400 rounded"
+          *ngIf="
+            password.invalid &&
+            (password.dirty || password.touched) &&
+            isSubmitted
+          "
+        >
+          <div *ngIf="password.hasError('required')">Password is required</div>
+          <div *ngIf="password.hasError('minlength')">
+            Password should be at least 6 characters
+          </div>
         </div>
       </div>
       <div
         class="relative px-4 py-3 mb-3 text-red-700 bg-red-100 border border-red-400 rounded"
-        *ngIf="
-          password.invalid &&
-          (password.dirty || password.touched) &&
-          isSubmitted
-        "
+        *ngIf="!doPasswordsMatch() && isSubmitted"
       >
-        <div *ngIf="password.hasError('required')">Password is required</div>
-        <div *ngIf="password.hasError('minlength')">
-          Password is min 6 characters
-        </div>
+        <div>Passwords do not match</div>
       </div>
-      <div
-      class="relative px-4 py-3 mb-3 text-red-700 bg-red-100 border border-red-400 rounded"
-      *ngIf="
-        confirmedPassword.invalid &&
-        (confirmedPassword.dirty || confirmedPassword.touched) &&
-        isSubmitted
-      "
-    >
-      <div *ngIf="confirmedPassword.hasError('required')">Password is required</div>
-      <div *ngIf="confirmedPassword.hasError('minlength')">
-        Password is min 6 characters
-      </div>
-    </div>
+
       <div class="mb-8 text-left">
         <label class="block mb-2 text-sm font-bold text-gray-700" for="username"
           >Name</label
@@ -81,7 +89,9 @@
         />
       </div>
       <div class="mb-8 text-left">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="confirmedPassword"
+        <label
+          class="block mb-2 text-sm font-bold text-gray-700"
+          for="confirmedPassword"
           >Confirm Password</label
         >
         <input
