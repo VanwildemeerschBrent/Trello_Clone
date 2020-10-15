@@ -24,6 +24,7 @@ export class RegistrationComponent implements OnInit {
 
   get email(): AbstractControl { return this.registrationForm.get('email'); }
   get password(): AbstractControl { return this.registrationForm.get('password'); }
+  get confirmedPassword(): AbstractControl { return this.registrationForm.get('confirmedPassword'); }
 
   onRegister(): void {
     this.isSubmitted = true;
