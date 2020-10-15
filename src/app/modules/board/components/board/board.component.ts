@@ -16,12 +16,11 @@ export class BoardComponent implements OnInit {
   boardColumns: number = 0;
   isBtnAddColumnVisible: boolean = true;
   constructor(private boardService: BoardService, private route: ActivatedRoute) {
-    console.log('Constructor Board component')
   }
 
   ngOnInit(): void {
     const boardId = this.route.snapshot.paramMap.get('id');
-    this.boardService.getTrelloBoard(boardId).subscribe((fetchedBoard) => {
+    this.boardService.getTrelloBoard(boardId).subscribe((fetchedBoard) => { 
       this.board = fetchedBoard;
     });
   }
