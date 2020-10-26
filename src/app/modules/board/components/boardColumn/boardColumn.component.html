@@ -1,0 +1,28 @@
+<div class="relative float-left w-2/12 mr-2 column">
+  <div
+    class="w-full p-2 my-2 ml-4 bg-white bg-opacity-75 rounded-sm column__content"
+  >
+    <p class="m-2 font-semibold column__content__header">
+      #{{ column.name }}
+      <button class="relative float-right px-3">
+        <fa-icon [icon]="faColumnMenu"></fa-icon>
+      </button>
+    </p>
+    <div class="column__content__issues">
+      <app-issueCard
+        class="card"
+        class="card"
+        *ngFor="let issue of column.issues"
+      ></app-issueCard>
+    </div>
+    <div class="m-1 column__content__button--addIssue">
+      <button
+        class="w-full p-2 text-left"
+        (click)="onClickAddNewIssueToBoard(column)"
+      >
+        <fa-icon [icon]="faPlus" class="px-1 pr-3"></fa-icon>
+        <span>Add card</span>
+      </button>
+    </div>
+  </div>
+</div>

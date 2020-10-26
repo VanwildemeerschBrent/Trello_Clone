@@ -15,14 +15,7 @@
         {{ board.name }}
       </p>
     </div>
-    <div
-      class="relative float-left w-2/12 mr-2 column"
-      *ngFor="let column of board.columns"
-    >
-      <div class="w-full p-2 my-2 ml-4 bg-white bg-opacity-75 rounded-sm">
-        <pre>{{ column | json }}</pre>
-      </div>
-    </div>
+    <app-boardColumn *ngFor="let column of board.columns" [column]="column" ></app-boardColumn>
     <div class="relative float-left w-2/12">
       <button
         *ngIf="isBtnAddColumnVisible"

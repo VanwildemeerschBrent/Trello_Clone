@@ -19,6 +19,8 @@ import { LoginComponent } from './modules/authentication/login/login.component';
 import { RegistrationComponent } from './modules/authentication/registration/registration.component';
 import { AuthComponent } from './modules/authentication/auth/auth.component';
 import { TokenInterceptorService } from './shared/services/tokenInterceptor.service';
+import { IssueCardComponent } from './modules/board/components/issueCard/issueCard.component';
+import { BoardColumnComponent } from './modules/board/components/boardColumn/boardColumn.component';
 
 
 
@@ -33,7 +35,9 @@ import { TokenInterceptorService } from './shared/services/tokenInterceptor.serv
     BoardComponent,
     LoginComponent,
     RegistrationComponent,
-    AuthComponent
+    AuthComponent,
+    IssueCardComponent,
+    BoardColumnComponent
   ],
   imports: [
     BrowserModule,
