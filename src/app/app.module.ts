@@ -4,8 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { LoginComponent } from './modules/login/components/login/login.component';
-import { RegistrationComponent } from './modules/registration/components/registration/registration.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './shared/components/home/home.component';
@@ -16,6 +15,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CreateBoardPopupComponent } from './modules/boardOverview/components/createBoardPopup/createBoardPopup.component';
 import { BoardComponent } from './modules/board/components/board/board.component';
+import { LoginComponent } from './modules/authentication/login/login.component';
+import { RegistrationComponent } from './modules/authentication/registration/registration.component';
+import { AuthComponent } from './modules/authentication/auth/auth.component';
+import { TokenInterceptorService } from './shared/services/tokenInterceptor.service';
 
 
 
@@ -24,12 +27,13 @@ import { BoardComponent } from './modules/board/components/board/board.component
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent,
-    RegistrationComponent,
     HomeComponent,
     BoardOverviewComponent,
     CreateBoardPopupComponent,
-    BoardComponent
+    BoardComponent,
+    LoginComponent,
+    RegistrationComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import { BoardComponent } from './modules/board/components/board/board.component
     HttpClientModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

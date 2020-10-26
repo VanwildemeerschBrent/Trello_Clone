@@ -11,7 +11,8 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  isSubmitted: boolean = false;
+  isSubmitted = false;
+  invalidUserCredentialsError = false;
 
 
   constructor(private authenticationService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) { }
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(3)])
+      password: new FormControl('', [Validators.required])
     });
   }
 
@@ -28,10 +29,11 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void {
     this.isSubmitted = true;
+    this.invalidUserCredentialsError = false;
     if (this.loginForm.valid) {
-      this.router.navigateByUrl('/overview');
-    } else {
-      console.log('Form is not valid', this.loginForm.get('email').value, this.loginForm.get('password').value);
+      this.authenticationService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe((userToken) => {
+        this.router.navigateByUrl('');
+      }, error => this.invalidUserCredentialsError = true)
     }
   }
 
