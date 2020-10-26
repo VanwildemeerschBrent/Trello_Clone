@@ -31,6 +31,12 @@
           Password is min 3 characters
         </div>
       </div>
+      <div
+        *ngIf="invalidUserCredentialsError"
+        class="relative px-4 py-3 mb-3 text-red-700 bg-red-100 border border-red-400 rounded"
+      >
+        <div>User credentials are not correct</div>
+      </div>
       <div class="mb-8 text-left">
         <label class="block mb-2 text-sm font-bold text-gray-700" for="username"
           >Email</label

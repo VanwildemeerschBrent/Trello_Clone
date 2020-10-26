@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   isSubmitted: boolean = false;
+  invalidUserCredentialsError: boolean = false;
 
 
   constructor(private authenticationService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) { }
@@ -28,12 +29,11 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void {
     this.isSubmitted = true;
+    this.invalidUserCredentialsError = false;
     if (this.loginForm.valid) {
       this.authenticationService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe((user) => {
-        console.log('User received');
-      })
-    } else {
-      console.log('Form is not valid', this.loginForm.get('email').value, this.loginForm.get('password').value);
+        this.router.navigateByUrl('');
+      }, error => this.invalidUserCredentialsError = true)
     }
   }
 
