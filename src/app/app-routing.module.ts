@@ -7,10 +7,11 @@ import { BoardComponent } from './modules/board/components/board/board.component
 import { BoardOverviewComponent } from './modules/boardOverview/components/board-overview/board-overview.component';
 
 import { HomeComponent } from './shared/components/home/home.component';
+import { AuthGuard } from './shared/guards/AuthGuard';
 
 const routes: Routes = [
   {
-    path: 'auth', component: AuthComponent, children: [
+    path: 'auth', component: AuthComponent, canActivate: [AuthGuard], children: [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegistrationComponent }
     ]

@@ -11,8 +11,8 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  isSubmitted: boolean = false;
-  invalidUserCredentialsError: boolean = false;
+  isSubmitted = false;
+  invalidUserCredentialsError = false;
 
 
   constructor(private authenticationService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) { }
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.isSubmitted = true;
     this.invalidUserCredentialsError = false;
     if (this.loginForm.valid) {
-      this.authenticationService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe((user) => {
+      this.authenticationService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe((userToken) => {
         this.router.navigateByUrl('');
       }, error => this.invalidUserCredentialsError = true)
     }
