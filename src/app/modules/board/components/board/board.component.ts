@@ -20,14 +20,17 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {
     const boardId = this.route.snapshot.paramMap.get('id');
-    this.boardService.getTrelloBoard(boardId).subscribe((fetchedBoard) => { 
+    this.boardService.getTrelloBoard(boardId).subscribe((fetchedBoard) => {
       this.board = fetchedBoard;
     });
   }
 
   onClickAddColumn(): void {
     this.isBtnAddColumnVisible = false;
-    this
+  }
+
+  addColumnToBoard(): void {
+    this.boardService.createNewBoardColumn(this.board, 'test').subscribe((board) => this.board = board)
   }
 
 }

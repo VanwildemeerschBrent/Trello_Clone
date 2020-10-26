@@ -7,7 +7,8 @@ import { Board } from '../models/board';
   providedIn: 'root'
 })
 export class BoardService {
-  private API_URL = 'https://trello-clone-api-bv.herokuapp.com/';
+  // private API_URL = 'https://trello-clone-api-bv.herokuapp.com/';
+  private API_URL = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
 
@@ -22,4 +23,14 @@ export class BoardService {
   createTrelloBoard(board: Board): Observable<Board> {
     return this.http.post<Board>(this.API_URL + 'boards', board);
   }
+
+  createNewBoardColumn(board: Board, columnName: string): Observable<Board> {
+    return this.http.post<Board>(`${this.API_URL}boards/column`, { id: board['_id'], name: columnName });
+  }
+
+  updateBoardColumn(): void {
+
+  }
+
+  deleteBoardColumn(): void { }
 }

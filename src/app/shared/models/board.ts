@@ -6,4 +6,5 @@ export class Board {
     updated_at: string;
     tags: string[];
     issues: object[];
+    columns: object[];
 }
