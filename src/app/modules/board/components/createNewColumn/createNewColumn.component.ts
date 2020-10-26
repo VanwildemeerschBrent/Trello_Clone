@@ -11,7 +11,7 @@ import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons"
 export class CreateNewColumnComponent implements OnInit {
 
   faPlus = faPlus;
-  faTimes = faTimes;
+  faClose = faTimes;
   isBtnAddColumnVisible: boolean = true;
 
   @Input() board: Board;
@@ -23,8 +23,7 @@ export class CreateNewColumnComponent implements OnInit {
   }
 
 
-  addColumnToBoard(): void {
-    this.createNewColumnEvent.emit('Test New column');
-   
+  addColumnToBoard(columnName: string): void {
+    this.createNewColumnEvent.emit(columnName);
   }
 }

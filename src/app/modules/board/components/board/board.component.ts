@@ -26,13 +26,10 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  onCreateNewColumnForBoard(): void {
-    this.boardService.createNewBoardColumn(this.board, 'test').subscribe((board) => {
+  onCreateNewColumnForBoard(columnName: string): void {
+    this.boardService.createNewBoardColumn(this.board, columnName).subscribe((board) => {
       this.board = board;
       this.isBtnAddColumnVisible = true;
     });
   }
-
-
-
 }

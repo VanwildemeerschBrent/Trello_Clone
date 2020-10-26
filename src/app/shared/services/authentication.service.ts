@@ -9,7 +9,7 @@ import { Tokens } from '../models/tokens.model';
 })
 export class AuthenticationService {
   // private API_URL = 'https://trello-clone-api-bv.herokuapp.com/';
-  private API_URL = 'http://localhost:3000/'; 
+  private API_URL = 'http://localhost:3000/';
 
   private readonly JWT_TOKEN: string = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN: string = 'REFRESH_TOKEN';

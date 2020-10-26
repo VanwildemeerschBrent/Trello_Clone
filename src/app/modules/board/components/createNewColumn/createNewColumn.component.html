@@ -15,10 +15,11 @@
       type="text"
       placeholder="Give this list a name"
       autofocus
+      #columnName
     />
 
     <button
-      (click)="addColumnToBoard()"
+      (click)="addColumnToBoard(columnName.value)"
       class="relative float-left w-1/3 py-1 text-white bg-green-500 rounded-sm"
     >
       Add list
