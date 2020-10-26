@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faPlus, faEllipsisH } from "@fortawesome/free-solid-svg-icons"
+import { faPlus, faEllipsisH, faTimes } from "@fortawesome/free-solid-svg-icons"
 
 @Component({
   selector: 'app-boardColumn',
@@ -10,6 +10,9 @@ export class BoardColumnComponent implements OnInit {
 
   faPlus = faPlus;
   faColumnMenu = faEllipsisH;
+  faClose = faTimes;
+
+  isAddNewIssueFormVisible = false;
 
   @Input() column;
 
@@ -18,10 +21,12 @@ export class BoardColumnComponent implements OnInit {
   ngOnInit() {
   }
 
-
   onClickAddNewIssueToBoard(column: Object): void {
-    console.warn('Add new issue to column', column)
-
+    this.isAddNewIssueFormVisible = true;
+    console.warn('Add new issue to column', column);
   }
 
+  addIssueToColumn(issueText: string): void {
+
+  }
 }

@@ -15,9 +15,34 @@
         *ngFor="let issue of column.issues"
       ></app-issueCard>
     </div>
-    <div class="m-1 column__content__button--addIssue">
+    <div class="m-1 column__content--addIssue">
+      <div
+        class="inline-block column__content--addIssue__form"
+        *ngIf="isAddNewIssueFormVisible"
+      >
+        <textarea
+          #issue
+          class="w-full p-2 my-2"
+          rows="3"
+          placeholder="Card Text"
+        ></textarea>
+
+        <button
+          (click)="addIssueToColumn(issue.value)"
+          class="relative float-left w-1/3 py-1 text-white bg-green-500 rounded-sm"
+        >
+          Add card
+        </button>
+        <button
+          class="relative float-left w-2/3 p-1 px-5 text-lg text-left text-gray-700"
+          (click)="isBtnAddColumnVisible = true"
+        >
+          <fa-icon [icon]="faClose"></fa-icon>
+        </button>
+      </div>
       <button
-        class="w-full p-2 text-left"
+        class="w-full p-2 text-left column__content--addIssue__button"
+        *ngIf="!isAddNewIssueFormVisible"
         (click)="onClickAddNewIssueToBoard(column)"
       >
         <fa-icon [icon]="faPlus" class="px-1 pr-3"></fa-icon>
