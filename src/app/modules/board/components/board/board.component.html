@@ -16,15 +16,17 @@
       </p>
     </div>
     <div
-      class="relative float-left w-2/12 column"
+      class="relative float-left w-2/12 mr-2 column"
       *ngFor="let column of board.columns"
     >
-      {{ column }}
+      <div class="w-full p-2 my-2 ml-4 bg-white bg-opacity-75 rounded-sm">
+        <pre>{{ column | json }}</pre>
+      </div>
     </div>
     <div class="relative float-left w-2/12">
       <button
         *ngIf="isBtnAddColumnVisible"
-        (click)="onClickAddColumn()"
+        (click)="isBtnAddColumnVisible = false"
         class="w-full p-2 my-2 ml-4 text-left text-white bg-black bg-opacity-50 rounded-sm focus:outline-none"
       >
         <fa-icon [icon]="faPlus" class="px-1"></fa-icon><span>Add list</span>
