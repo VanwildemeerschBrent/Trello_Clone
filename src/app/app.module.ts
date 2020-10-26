@@ -11,13 +11,14 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BoardOverviewComponent } from './modules/boardOverview/components/board-overview/board-overview.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CreateBoardPopupComponent } from './modules/boardOverview/components/createBoardPopup/createBoardPopup.component';
 import { BoardComponent } from './modules/board/components/board/board.component';
 import { LoginComponent } from './modules/authentication/login/login.component';
 import { RegistrationComponent } from './modules/authentication/registration/registration.component';
 import { AuthComponent } from './modules/authentication/auth/auth.component';
+import { TokenInterceptorService } from './shared/services/tokenInterceptor.service';
 
 
 
@@ -33,7 +34,7 @@ import { AuthComponent } from './modules/authentication/auth/auth.component';
     LoginComponent,
     RegistrationComponent,
     AuthComponent
-    ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,7 +45,9 @@ import { AuthComponent } from './modules/authentication/auth/auth.component';
     HttpClientModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
