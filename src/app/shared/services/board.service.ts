@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Board } from '../models/board';
+import { BoardColumn } from '../models/boardColumn';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,8 @@ export class BoardService {
   }
 
   deleteBoardColumn(): void { }
+
+  createNewIssue(board: Board, column: BoardColumn, issue: string): Observable<Board> {
+    return this.http.post<Board>(`${this.API_URL}boards/issue`, { id: board['_id'], columnId: column.id, issueText: issue })
+  }
 }

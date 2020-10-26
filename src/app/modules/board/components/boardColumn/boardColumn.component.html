@@ -10,9 +10,8 @@
     </p>
     <div class="column__content__issues">
       <app-issueCard
-        class="card"
-        class="card"
         *ngFor="let issue of column.issues"
+        [issue]="issue"
       ></app-issueCard>
     </div>
     <div class="m-1 column__content--addIssue">

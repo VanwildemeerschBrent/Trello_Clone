@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faPlus, faEllipsisH, faTimes } from "@fortawesome/free-solid-svg-icons"
 
 @Component({
@@ -15,6 +15,8 @@ export class BoardColumnComponent implements OnInit {
   isAddNewIssueFormVisible = false;
 
   @Input() column;
+  @Output() createNewIssueEvent = new EventEmitter<Object>()
+
 
   constructor() { }
 
@@ -23,10 +25,11 @@ export class BoardColumnComponent implements OnInit {
 
   onClickAddNewIssueToBoard(column: Object): void {
     this.isAddNewIssueFormVisible = true;
-    console.warn('Add new issue to column', column);
   }
 
   addIssueToColumn(issueText: string): void {
-
+    console.warn('Add issue to column', issueText);
+    this.createNewIssueEvent.emit({ column: this.column, issue: issueText });
+    this.isAddNewIssueFormVisible = false;
   }
 }

@@ -32,4 +32,12 @@ export class BoardComponent implements OnInit {
       this.isBtnAddColumnVisible = true;
     });
   }
+
+  onCreateNewIssue($input): void {
+    const { column, issue } = $input
+    this.boardService.createNewIssue(this.board, column, issue).subscribe((board) => {
+      console.warn('New board received on creating issue', board);
+      this.board = board;
+    });
+  }
 }

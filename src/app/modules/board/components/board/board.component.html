@@ -17,7 +17,11 @@
     <app-boardColumn
       *ngFor="let column of board.columns"
       [column]="column"
+      (createNewIssueEvent)="onCreateNewIssue($event)"
     ></app-boardColumn>
-    <app-createNewColumn [board]="board" (createNewColumnEvent)="onCreateNewColumnForBoard($event)"></app-createNewColumn>
+    <app-createNewColumn
+      [board]="board"
+      (createNewColumnEvent)="onCreateNewColumnForBoard($event)"
+    ></app-createNewColumn>
   </div>
 </div>
