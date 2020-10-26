@@ -5,7 +5,6 @@
     backgroundSize: 'cover',
     backgroundPosition: '50%'
   }"
-  *ngIf="board"
 >
   <div class="board" *ngIf="board">
     <div
@@ -15,39 +14,10 @@
         {{ board.name }}
       </p>
     </div>
-    <app-boardColumn *ngFor="let column of board.columns" [column]="column" ></app-boardColumn>
-    <div class="relative float-left w-2/12">
-      <button
-        *ngIf="isBtnAddColumnVisible"
-        (click)="isBtnAddColumnVisible = false"
-        class="w-full p-2 my-2 ml-4 text-left text-white bg-black bg-opacity-50 rounded-sm focus:outline-none"
-      >
-        <fa-icon [icon]="faPlus" class="px-1"></fa-icon><span>Add list</span>
-      </button>
-      <div
-        class="inline-block p-2 my-2 ml-4 bg-white bg-opacity-75 rounded-sm"
-        *ngIf="!isBtnAddColumnVisible"
-      >
-        <input
-          class="w-full px-3 py-2 mb-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-          type="text"
-          placeholder="Give this list a name"
-          autofocus
-        />
-
-        <button
-          (click)="addColumnToBoard()"
-          class="relative float-left w-1/3 py-1 text-white bg-green-500 rounded-sm"
-        >
-          Add list
-        </button>
-        <button
-          class="relative float-left w-2/3 p-1 px-5 text-lg text-left text-gray-700"
-          (click)="isBtnAddColumnVisible = true"
-        >
-          <fa-icon [icon]="faClose"></fa-icon>
-        </button>
-      </div>
-    </div>
+    <app-boardColumn
+      *ngFor="let column of board.columns"
+      [column]="column"
+    ></app-boardColumn>
+    <app-createNewColumn [board]="board" (createNewColumnEvent)="onCreateNewColumnForBoard($event)"></app-createNewColumn>
   </div>
 </div>

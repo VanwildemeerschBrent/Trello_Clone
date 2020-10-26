@@ -21,6 +21,7 @@ import { AuthComponent } from './modules/authentication/auth/auth.component';
 import { TokenInterceptorService } from './shared/services/tokenInterceptor.service';
 import { IssueCardComponent } from './modules/board/components/issueCard/issueCard.component';
 import { BoardColumnComponent } from './modules/board/components/boardColumn/boardColumn.component';
+import { CreateNewColumnComponent } from './modules/board/components/createNewColumn/createNewColumn.component';
 
 
 
@@ -37,7 +38,8 @@ import { BoardColumnComponent } from './modules/board/components/boardColumn/boa
     RegistrationComponent,
     AuthComponent,
     IssueCardComponent,
-    BoardColumnComponent
+    BoardColumnComponent,
+    CreateNewColumnComponent
   ],
   imports: [
     BrowserModule,

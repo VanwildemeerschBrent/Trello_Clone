@@ -11,7 +11,7 @@ export class BoardColumnComponent implements OnInit {
   faPlus = faPlus;
   faColumnMenu = faEllipsisH;
 
-  @Input() column: Object;
+  @Input() column;
 
   constructor() { }
 
