@@ -22,6 +22,7 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     const boardId = this.route.snapshot.paramMap.get('id');
     this.boardService.getTrelloBoard(boardId).subscribe((fetchedBoard) => {
+      console.warn('Fetched board', fetchedBoard);
       this.board = fetchedBoard;
     });
   }

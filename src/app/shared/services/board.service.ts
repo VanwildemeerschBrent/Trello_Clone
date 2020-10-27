@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { Board } from '../models/board';
 import { BoardColumn } from '../models/boardColumn';
 
@@ -18,7 +19,18 @@ export class BoardService {
   }
 
   getTrelloBoard(boardId: string): Observable<Board> {
-    return this.http.get<Board>(this.API_URL + 'boards/' + boardId)
+    return this.http.get<Board>(this.API_URL + 'boards/' + boardId).pipe(map((boardData) => {
+      let { board, columns, issues } = boardData;
+      console.warn(issues);
+      board.columns = [];
+      board.columns.push(columns[0]);
+      board.columns.forEach((column) => {
+        const issuesForColumn = issues.filter(x => x.column_id === column.id);
+        column.issues = [];
+        column.issues = issuesForColumn;
+      });
+      return board;
+    }));
   }
 
   createTrelloBoard(board: Board): Observable<Board> {
