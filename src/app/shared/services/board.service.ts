@@ -14,22 +14,15 @@ export class BoardService {
 
   constructor(private http: HttpClient) { }
 
+
+  // Trello Board Instances
   getAllTrelloBoards(): Observable<Board[]> {
     return this.http.get<Board[]>(this.API_URL + 'boards/all');
   }
 
   getTrelloBoard(boardId: string): Observable<Board> {
     return this.http.get<Board>(this.API_URL + 'boards/' + boardId).pipe(map((boardData) => {
-      let { board, columns, issues } = boardData;
-      console.warn(issues);
-      board.columns = [];
-      board.columns.push(columns[0]);
-      board.columns.forEach((column) => {
-        const issuesForColumn = issues.filter(x => x.column_id === column.id);
-        column.issues = [];
-        column.issues = issuesForColumn;
-      });
-      return board;
+      return boardData;
     }));
   }
 
@@ -37,17 +30,30 @@ export class BoardService {
     return this.http.post<Board>(this.API_URL + 'boards', board);
   }
 
+
+  // Trello Board Column instances
+
   createNewBoardColumn(board: Board, columnName: string): Observable<Board> {
     return this.http.post<Board>(`${this.API_URL}boards/column`, { id: board['_id'], name: columnName });
   }
 
-  updateBoardColumn(): void {
+  updateBoardColumn(columnId: String): Observable<BoardColumn> {
+    return this.http.put<BoardColumn>(`${this.API_URL}boards/column/${columnId}`, {});
 
   }
 
-  deleteBoardColumn(): void { }
+  deleteBoardColumn(columnId: String): Observable<BoardColumn> {
+    return this.http.delete<BoardColumn>(`${this.API_URL}boards/column/${columnId}`);
+  }
 
+  // Trello Board Issue instance
   createNewIssue(board: Board, column: BoardColumn, issue: string): Observable<Board> {
     return this.http.post<Board>(`${this.API_URL}boards/issue`, { id: board['_id'], columnId: column.id, issueText: issue })
+  }
+  updateIssue(board: Board, column: BoardColumn, issue: string): Observable<Board> {
+    return this.http.put<Board>(`${this.API_URL}boards/issue`, { id: board['_id'], columnId: column.id, issueText: issue })
+  }
+  deleteIssue(board: Board, column: BoardColumn, issue: string): Observable<Board> {
+    return this.http.delete<Board>(`${this.API_URL}boards/issue`)
   }
 }
