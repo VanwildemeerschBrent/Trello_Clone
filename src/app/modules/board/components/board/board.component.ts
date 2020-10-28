@@ -22,7 +22,6 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     const boardId = this.route.snapshot.paramMap.get('id');
     this.boardService.getTrelloBoard(boardId).subscribe((fetchedBoard) => {
-      console.warn('Fetched board', fetchedBoard);
       this.board = fetchedBoard;
     });
   }
@@ -37,7 +36,6 @@ export class BoardComponent implements OnInit {
   onCreateNewIssue($input): void {
     const { column, issue } = $input
     this.boardService.createNewIssue(this.board, column, issue).subscribe((board) => {
-      console.warn('New board received on creating issue', board);
       this.board = board;
     });
   }
