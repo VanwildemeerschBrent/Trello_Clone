@@ -15,7 +15,7 @@ export class BoardColumnComponent implements OnInit {
   isAddNewIssueFormVisible = false;
 
   @Input() column;
-  @Output() createNewIssueEvent = new EventEmitter<Object>()
+  @Output() createNewIssueEvent = new EventEmitter<Object>();
 
 
   constructor() { }

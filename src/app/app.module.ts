@@ -22,6 +22,7 @@ import { TokenInterceptorService } from './shared/services/tokenInterceptor.serv
 import { IssueCardComponent } from './modules/board/components/issueCard/issueCard.component';
 import { BoardColumnComponent } from './modules/board/components/boardColumn/boardColumn.component';
 import { CreateNewColumnComponent } from './modules/board/components/createNewColumn/createNewColumn.component';
+import { EditIssuePopupComponent } from './modules/board/components/editIssuePopup/editIssuePopup.component';
 
 
 
@@ -39,7 +40,8 @@ import { CreateNewColumnComponent } from './modules/board/components/createNewCo
     AuthComponent,
     IssueCardComponent,
     BoardColumnComponent,
-    CreateNewColumnComponent
+    CreateNewColumnComponent,
+    EditIssuePopupComponent,
   ],
   imports: [
     BrowserModule,

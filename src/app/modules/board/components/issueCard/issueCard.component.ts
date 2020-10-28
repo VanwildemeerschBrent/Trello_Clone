@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
+import { BoardService } from 'src/app/shared/services/board.service';
 
 @Component({
   selector: 'app-issueCard',
@@ -10,11 +11,15 @@ export class IssueCardComponent implements OnInit {
 
   @Input() issue;
 
-  editIcon = faEllipsisH;
+  editIcon = faPencilAlt;
 
-  constructor() { }
+  constructor(private boardService: BoardService) { }
 
   ngOnInit() {
+  }
+
+  onClickEditIssue() { 
+    // this.boardService.updateIssue().subscribe(()=>{})
   }
 
 }

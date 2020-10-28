@@ -1,8 +1,13 @@
-<div class="my-2 bg-white rounded-sm">
-  <div class="inline-block w-full h-auto m-2">
-    <span class="relative float-left">{{ issue.text }}</span>
-    <button class="relative float-right pr-3">
+<div
+  (click)="onClickEditIssue()"
+  class="p-3 m-2 leading-4 bg-white rounded-sm cursor-pointer hover:bg-gray-200 focus:outline-none"
+>
+  <div class="inline-block w-full h-auto">
+    <span class="float-left px-2">{{ issue.text }}</span>
+    <button class="float-right px-2 hover:bg-gray-300 focus:outline-none">
       <fa-icon [icon]="editIcon"></fa-icon>
     </button>
   </div>
 </div>
+
+<app-editIssuePopup class="absolute "> </app-editIssuePopup>
