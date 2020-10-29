@@ -1,5 +1,5 @@
 export class BoardColumn {
-    id: string;
+    _id: string;
     name: string;
     issues: [];
 }

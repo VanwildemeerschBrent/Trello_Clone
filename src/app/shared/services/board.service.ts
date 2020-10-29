@@ -31,7 +31,7 @@ export class BoardService {
   deleteTrelloBoard(board: Board): Observable<Board> {
     return this.http.delete<Board>(this.API_URL + 'board');
   }
-  
+
   // Trello Board Column instances
   createNewBoardColumn(board: Board, columnName: string): Observable<Board> {
     return this.http.post<Board>(`${this.API_URL}boards/column`, { id: board['_id'], name: columnName });
@@ -47,10 +47,10 @@ export class BoardService {
 
   // Trello Board Issue instance
   createNewIssue(board: Board, column: BoardColumn, issue: string): Observable<Board> {
-    return this.http.post<Board>(`${this.API_URL}boards/issue`, { id: board['_id'], columnId: column._id, issueText: issue })
+    return this.http.post<Board>(`${this.API_URL}boards/issue`, { id: board._id, columnId: column._id, issueText: issue })
   }
   updateIssue(board: Board, column: BoardColumn, issue: string): Observable<Board> {
-    return this.http.put<Board>(`${this.API_URL}boards/issue`, { id: board['_id'], columnId: column.id, issueText: issue })
+    return this.http.put<Board>(`${this.API_URL}boards/issue`, { id: board._id, columnId: column._id, issueText: issue })
   }
   deleteIssue(board: Board, column: BoardColumn, issue: string): Observable<Board> {
     return this.http.delete<Board>(`${this.API_URL}boards/issue`)

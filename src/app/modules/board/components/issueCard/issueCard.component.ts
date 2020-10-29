@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import { BoardService } from 'src/app/shared/services/board.service';
 
@@ -10,6 +10,7 @@ import { BoardService } from 'src/app/shared/services/board.service';
 export class IssueCardComponent implements OnInit {
 
   @Input() issue;
+  @Output() editIssueEvent = new EventEmitter<string>();
 
   editIcon = faPencilAlt;
 
@@ -18,8 +19,8 @@ export class IssueCardComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClickEditIssue() { 
-    // this.boardService.updateIssue().subscribe(()=>{})
+  onClickEditIssue() {
+    this.editIssueEvent.emit(this.issue);
   }
 
 }

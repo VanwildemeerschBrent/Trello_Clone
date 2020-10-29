@@ -31,7 +31,6 @@ export class CreateBoardPopupComponent implements OnInit {
   onClickCreateBoard(): void {
     if (this.creationForm.valid) {
       const newBoard: Board = new Board();
-      newBoard.id = Math.random().toString(36).substring(2) + Date.now().toString(36);
       newBoard.name = this.creationForm.get('name').value;
       newBoard.tags = this.creationForm.get('tags').value.split(';').map(x => x.trim());
       newBoard.created_by = 'User';

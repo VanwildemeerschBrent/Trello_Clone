@@ -18,6 +18,8 @@ export class BoardColumnComponent implements OnInit {
   @Output() createNewIssueEvent = new EventEmitter<Object>();
 
 
+  isEditIssuePopupVisible=false;
+
   constructor() { }
 
   ngOnInit() {
@@ -28,8 +30,12 @@ export class BoardColumnComponent implements OnInit {
   }
 
   addIssueToColumn(issueText: string): void {
-    console.warn('Add issue to column', issueText);
     this.createNewIssueEvent.emit({ column: this.column, issue: issueText });
     this.isAddNewIssueFormVisible = false;
+  }
+
+  onClickEditIssue(issue) {
+    console.warn('Edit new issue');
+    this.isEditIssuePopupVisible=true;
   }
 }
