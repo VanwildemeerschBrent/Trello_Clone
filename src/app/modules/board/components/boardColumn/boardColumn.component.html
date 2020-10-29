@@ -12,7 +12,7 @@
       <app-issueCard
         *ngFor="let issue of column.issues"
         [issue]="issue"
-        (editIssueEvent)="onClickEditIssue()"
+        (editIssueEvent)="onClickEditIssue(issue)"
       ></app-issueCard>
     </div>
     <div class="m-1 column__content--addIssue">
@@ -24,7 +24,7 @@
           #issue
           class="w-full p-2 my-2"
           rows="3"
-          placeholder="Card Text"
+          placeholder="Card Title"
         ></textarea>
 
         <button
@@ -52,5 +52,8 @@
   </div>
 </div>
 
-<app-editIssuePopup  *ngIf="isEditIssuePopupVisible"></app-editIssuePopup>
-
+<app-editIssuePopup
+  [issue]="selectedIssue"
+  *ngIf="isEditIssuePopupVisible"
+  (closePopupEvent)="onClickClosePopup()"
+></app-editIssuePopup>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Board } from '../models/board';
 import { BoardColumn } from '../models/boardColumn';
+import { Issue } from '../models/Issue';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class BoardService {
   }
 
   createTrelloBoard(board: Board): Observable<Board> {
-    return this.http.post<Board>(this.API_URL + 'boards/new ', board);
+    return this.http.post<Board>(this.API_URL + 'boards', board);
   }
 
   deleteTrelloBoard(board: Board): Observable<Board> {
@@ -52,7 +53,7 @@ export class BoardService {
   updateIssue(board: Board, column: BoardColumn, issue: string): Observable<Board> {
     return this.http.put<Board>(`${this.API_URL}boards/issue`, { id: board._id, columnId: column._id, issueText: issue })
   }
-  deleteIssue(board: Board, column: BoardColumn, issue: string): Observable<Board> {
+  deleteIssue(issue: Issue): Observable<Board> {
     return this.http.delete<Board>(`${this.API_URL}boards/issue`)
   }
 }
