@@ -59,8 +59,9 @@ export class BoardOverviewComponent implements OnInit {
   }
 
   onClickDeleteBoard(board: Board): void {
-    console.warn('Delete board', board);
+    this.boardService.deleteTrelloBoard(board).subscribe(() => {
+      this.trelloBoards = this.trelloBoards.filter(x => x._id !== board._id);
+      this.sortAndFilterByLastUpdated();
+    });
   }
-
-
 }

@@ -18,7 +18,7 @@ export class BoardService {
 
   // Trello Board Instances
   getAllTrelloBoards(): Observable<Board[]> {
-    return this.http.get<Board[]>(this.API_URL + 'boards/all'); 
+    return this.http.get<Board[]>(this.API_URL + 'boards/all');
   }
 
   getTrelloBoard(boardId: string): Observable<Board> {
@@ -30,7 +30,7 @@ export class BoardService {
   }
 
   deleteTrelloBoard(board: Board): Observable<Board> {
-    return this.http.delete<Board>(this.API_URL + 'board');
+    return this.http.delete<Board>(this.API_URL + 'boards/' + board._id);
   }
 
   // Trello Board Column instances
