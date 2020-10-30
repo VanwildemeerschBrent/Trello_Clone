@@ -1,6 +1,8 @@
-import { HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { AuthenticationService } from './authentication.service';
 
 @Injectable({
@@ -8,7 +10,7 @@ import { AuthenticationService } from './authentication.service';
 })
 export class TokenInterceptorService implements HttpInterceptor {
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   intercept(req, next): Observable<any> {
 
@@ -18,7 +20,17 @@ export class TokenInterceptorService implements HttpInterceptor {
       }
     });
 
-    return next.handle(tokenizedRequest);
+    return next.handle(tokenizedRequest).pipe(tap(() => { }, (err: any) => {
+
+      if (err instanceof HttpErrorResponse) {
+        if (err.status !== 401) {
+          console.error('Status !== 401')
+          return;
+        }
+        this.authenticationService.logout();
+        this.router.navigateByUrl('/auth/login');
+      }
+    }));
   }
 
 }
