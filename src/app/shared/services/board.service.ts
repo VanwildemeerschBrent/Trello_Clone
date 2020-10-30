@@ -18,7 +18,7 @@ export class BoardService {
 
   // Trello Board Instances
   getAllTrelloBoards(): Observable<Board[]> {
-    return this.http.get<Board[]>(this.API_URL + 'boards/all');
+    return this.http.get<Board[]>(this.API_URL + 'boards/all'); 
   }
 
   getTrelloBoard(boardId: string): Observable<Board> {
