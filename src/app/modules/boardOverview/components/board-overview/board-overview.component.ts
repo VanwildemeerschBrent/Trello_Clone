@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faClock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faUser, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Board } from 'src/app/shared/models/board';
 import { BoardService } from 'src/app/shared/services/board.service';
 
@@ -28,13 +28,14 @@ import { BoardService } from 'src/app/shared/services/board.service';
 export class BoardOverviewComponent implements OnInit {
   faClock = faClock;
   faUser = faUser;
+  deleteIcon = faTrash
 
   trelloBoards: Board[] = [];
   lastChangedBoards: Board[];
   isNewBoardPopupVisible: boolean = false;
   constructor(private boardService: BoardService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.boardService.getAllTrelloBoards().subscribe((allBoards) => {
       this.trelloBoards = allBoards.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
       this.sortAndFilterByLastUpdated();
@@ -54,7 +55,11 @@ export class BoardOverviewComponent implements OnInit {
       this.trelloBoards.push(board);
       this.isNewBoardPopupVisible = false;
       this.router.navigateByUrl('/board/' + board._id);
-    })
+    });
+  }
+
+  onClickDeleteBoard(board: Board): void {
+    console.warn('Delete board', board);
   }
 
 
