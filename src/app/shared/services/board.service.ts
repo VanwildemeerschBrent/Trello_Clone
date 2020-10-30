@@ -10,8 +10,8 @@ import { Issue } from '../models/Issue';
   providedIn: 'root'
 })
 export class BoardService {
-  // private API_URL = 'https://trello-clone-api-bv.herokuapp.com/';
-  private API_URL = 'http://localhost:3000/';
+  private API_URL = 'https://trello-clone-api-bv.herokuapp.com/';
+  // private API_URL = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
 
