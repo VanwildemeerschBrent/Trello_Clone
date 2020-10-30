@@ -10,20 +10,6 @@ import { BoardService } from 'src/app/shared/services/board.service';
   selector: 'app-board-overview',
   templateUrl: './board-overview.component.html',
   styleUrls: ['./board-overview.component.scss'],
-  animations: [
-    trigger('fade', [
-      transition('void => *', [
-        style({ opacity: 0 }),
-        animate(1000)
-      ])
-    ]),
-    trigger('fadePopup', [
-      transition('void => *', [
-        style({ opacity: 0 }),
-        animate(200)
-      ])
-    ])
-  ]
 })
 export class BoardOverviewComponent implements OnInit {
   faClock = faClock;
