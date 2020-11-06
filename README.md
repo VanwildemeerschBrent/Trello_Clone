@@ -2,9 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
 
-## Development server
+## Create Docker build
+Run `docker build -t {image_name}:{tagName}
 
-Run `docker run -v ${PWD}:/app -v/app/node_modules -p 4200:4200 --rm trelloclone:dev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Development server
+Run `docker run -v ${PWD}:/app -v/app/node_modules -p 4200:4200 --rm {image_name}:{tagName}` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
