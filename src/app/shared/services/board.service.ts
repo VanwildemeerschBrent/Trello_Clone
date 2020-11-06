@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Board } from '../models/board';
 import { BoardColumn } from '../models/boardColumn';
-import { Issue } from '../models/Issue';
+import { Issue } from '../models/issue';
 
 @Injectable({
   providedIn: 'root'
