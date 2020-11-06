@@ -47,8 +47,6 @@ export class AuthenticationService {
     return localStorage.getItem(this.REFRESH_TOKEN);
   }
 
-
-
   private doLoginUser(userEmail: string, tokens: Tokens): void {
     this.loggedInUser = userEmail;
     this.storeTokens(tokens);
