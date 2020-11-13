@@ -48,6 +48,7 @@ export class BoardService {
 
   // Trello Board Issue instance
   createNewIssue(board: Board, column: BoardColumn, issue: string): Observable<Board> {
+
     return this.http.post<Board>(`${this.API_URL}boards/issue`, { id: board._id, columnId: column._id, issueText: issue })
   }
   updateIssue(board: Board, column: BoardColumn, issue: string): Observable<Board> {
