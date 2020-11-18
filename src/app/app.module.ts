@@ -11,11 +11,11 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-import { TokenInterceptorService } from './shared/services/tokenInterceptor.service';
+import { TokenInterceptorService } from './core/services/tokenInterceptor.service';
 
 import { AuthModule } from './auth/auth.module';
 import { BoardModule } from './boards/board.module';
-import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 
 
@@ -30,7 +30,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     AuthModule,
     BoardModule,
-    SharedModule,
+    CoreModule,
     AppRoutingModule,
   ],
   providers: [

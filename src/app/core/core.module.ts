@@ -6,10 +6,6 @@ import { HomeComponent } from './components/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AuthComponent } from '../auth/components/auth/auth.component';
-import { AuthGuard } from '../auth/guards/AuthGuard';
-import { LoginComponent } from '../auth/components/login/login.component';
-import { RegistrationComponent } from '../auth/components/registration/registration.component';
 
 
 
@@ -31,4 +27,4 @@ import { RegistrationComponent } from '../auth/components/registration/registrat
     ReactiveFormsModule,
   ]
 })
-export class SharedModule { }
+export class CoreModule { }

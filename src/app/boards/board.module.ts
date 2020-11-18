@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 import { BoardComponent } from './components/board/board.component';
 import { BoardPreviewComponent } from './components/board-preview/board-preview.component';
 import { BoardOverviewComponent } from './components/board-overview/board-overview.component';
@@ -10,8 +10,7 @@ import { CreateNewColumnComponent } from './components/createNewColumn/createNew
 import { EditIssuePopupComponent } from './components/editIssuePopup/editIssuePopup.component';
 import { IssueCardComponent } from './components/issueCard/issueCard.component';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from '../shared/components/home/home.component';
-import { AuthGuard } from '../auth/guards/AuthGuard';
+import { HomeComponent } from '../core/components/home/home.component';
 
 
 
@@ -29,7 +28,7 @@ import { AuthGuard } from '../auth/guards/AuthGuard';
   ],
   imports: [
     CommonModule,
-    SharedModule,
+    CoreModule,
     RouterModule.forChild([
       {
         path: 'main', component: HomeComponent, children: [

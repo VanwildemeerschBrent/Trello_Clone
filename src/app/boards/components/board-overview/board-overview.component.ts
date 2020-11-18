@@ -2,7 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faClock, faUser, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Board } from 'src/app/shared/models/board';
+import { Board } from 'src/app/core/models/board';
 import { BoardService } from 'src/app/boards/services/board.service';
 
 
