@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faTimes, faCopy, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { BoardService } from 'src/app/shared/services/board.service';
+import { BoardService } from 'src/app/boards/services/board.service';
 @Component({
   selector: 'app-editIssuePopup',
   templateUrl: './editIssuePopup.component.html',

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Board } from 'src/app/shared/models/board';
-import { BoardService } from 'src/app/shared/services/board.service';
+import { BoardService } from 'src/app/boards/services/board.service';
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons"
 
 @Component({

@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { Board } from '../models/board';
-import { BoardColumn } from '../models/boardColumn';
-import { Issue } from '../models/issue';
+import { Board } from '../../shared/models/board';
+import { BoardColumn } from '../../shared/models/boardColumn';
+import { Issue } from '../../shared/models/issue';
 
 @Injectable({
   providedIn: 'root'

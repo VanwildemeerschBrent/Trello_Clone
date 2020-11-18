@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Board } from 'src/app/shared/models/board';
-import { BoardService } from 'src/app/shared/services/board.service';
+import { BoardService } from 'src/app/boards/services/board.service';
 import { faPlus, faTimes, faEllipsisH } from "@fortawesome/free-solid-svg-icons"
 @Component({
   selector: 'app-board',

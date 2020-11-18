@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '../../auth/services/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class TokenInterceptorService implements HttpInterceptor {
           return;
         }
         this.authenticationService.logout();
-        this.router.navigateByUrl('/auth/login');
+        this.router.navigate(['/auth/login']).catch((error) => console.warn('Error', error));
       }
     }));
   }

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faClock, faUser, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Board } from 'src/app/shared/models/board';
-import { BoardService } from 'src/app/shared/services/board.service';
+import { BoardService } from 'src/app/boards/services/board.service';
 
 
 @Component({
