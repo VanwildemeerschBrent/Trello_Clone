@@ -30,7 +30,6 @@ export class RegistrationComponent implements OnInit {
 
   onRegister(): void {
     this.isSubmitted = true;
-    console.warn('Do passwords match', this.doPasswordsMatch());
     if (this.registrationForm.valid && this.doPasswordsMatch()) {
       const newUser = new User();
       newUser.name = this.registrationForm.get('name').value;

@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { CreateNewColumnComponent } from './createNewColumn.component';
 
@@ -11,9 +12,10 @@ describe('CreateNewColumnComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateNewColumnComponent ]
+      declarations: [CreateNewColumnComponent],
+      imports: [HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

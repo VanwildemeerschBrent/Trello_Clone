@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { Board } from 'src/app/core/models/board';
+
 @Component({
   selector: 'app-createBoardPopup',
   templateUrl: './createBoardPopup.component.html',

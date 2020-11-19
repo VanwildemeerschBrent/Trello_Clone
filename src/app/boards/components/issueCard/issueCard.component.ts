@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
-import { BoardService } from 'src/app/boards/services/board.service';
+import { BoardService } from '../../services/board.service';
 
 @Component({
   selector: 'app-issueCard',
@@ -16,10 +16,10 @@ export class IssueCardComponent implements OnInit {
 
   constructor(private boardService: BoardService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  onClickEditIssue() {
+  onClickEditIssue(): void {
     this.editIssueEvent.emit(this.issue);
   }
 

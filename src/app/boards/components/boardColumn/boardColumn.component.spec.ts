@@ -11,14 +11,15 @@ describe('BoardColumnComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoardColumnComponent ]
+      declarations: [BoardColumnComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BoardColumnComponent);
     component = fixture.componentInstance;
+    component.column = { name: 'Test', id: 1 };
     fixture.detectChanges();
   });
 

@@ -1,7 +1,8 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { BoardComponent } from './board.component';
 
@@ -9,11 +10,12 @@ describe('BoardComponent', () => {
   let component: BoardComponent;
   let fixture: ComponentFixture<BoardComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoardComponent ]
+      declarations: [BoardComponent],
+      imports: [HttpClientTestingModule],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -25,4 +27,15 @@ describe('BoardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('Add column', () => {
+    it('should add column', () => {
+
+    });
+  });
+
+  describe('Add Issue', () => {
+
+  });
+
 });

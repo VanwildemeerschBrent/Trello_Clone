@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
@@ -30,8 +30,12 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     this.isSubmitted = true;
     this.invalidUserCredentialsError = false;
+
+
     if (this.loginForm.valid) {
-      this.authenticationService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe((userToken) => {
+      const email = this.loginForm.get('email').value;
+      const password = this.loginForm.get('password').value;
+      this.authenticationService.login(email, password).subscribe((userToken) => {
         this.router.navigateByUrl('');
       }, error => this.invalidUserCredentialsError = true)
     }

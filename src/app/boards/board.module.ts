@@ -11,6 +11,7 @@ import { EditIssuePopupComponent } from './components/editIssuePopup/editIssuePo
 import { IssueCardComponent } from './components/issueCard/issueCard.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from '../core/components/home/home.component';
+import { BoardService } from './services/board.service';
 
 
 
@@ -38,6 +39,6 @@ import { HomeComponent } from '../core/components/home/home.component';
       },
     ])
 
-  ]
+  ],
 })
 export class BoardModule { }

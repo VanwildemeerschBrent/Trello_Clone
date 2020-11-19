@@ -5,6 +5,7 @@ import { map, tap } from 'rxjs/operators';
 import { Board } from '../../core/models/board';
 import { BoardColumn } from '../../core/models/boardColumn';
 import { Issue } from '../../core/models/issue';
+import { BoardModule } from '../board.module';
 
 @Injectable({
   providedIn: 'root'

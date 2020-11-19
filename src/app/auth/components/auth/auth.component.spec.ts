@@ -1,9 +1,10 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { AuthComponent } from './auth.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
@@ -11,9 +12,10 @@ describe('AuthComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthComponent ]
+      declarations: [AuthComponent],
+      imports: [HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,7 +24,7 @@ describe('AuthComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', inject([HttpTestingController], (httpClient: HttpTestingController) => {
     expect(component).toBeTruthy();
-  });
+  }));
 });

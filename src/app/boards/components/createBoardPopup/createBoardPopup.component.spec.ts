@@ -2,8 +2,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { CreateBoardPopupComponent } from './createBoardPopup.component';
+import { FormBuilder } from '@angular/forms';
 
 describe('CreateBoardPopupComponent', () => {
   let component: CreateBoardPopupComponent;
@@ -11,9 +13,11 @@ describe('CreateBoardPopupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateBoardPopupComponent ]
+      declarations: [CreateBoardPopupComponent],
+      imports: [HttpClientTestingModule],
+      providers: [FormBuilder]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
